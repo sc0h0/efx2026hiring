@@ -34,7 +34,7 @@ Use the hand-check files to prove you understand the calculation manually.
 
 Use SQL to build a recovery curve.
 
-A recovery curve shows cumulative payments received over time since the account was placed into collections.
+A recovery curve shows cumulative payments by elapsed time since placement, such as week 0, week 1, week 2, etc. The curve should let you compare accounts placed at different calendar dates on a common “time since placement” basis.
 
 A simple recovery rate is:
 
@@ -57,7 +57,7 @@ Produce a summary with:
 
 ### 2. Recovery curve
 
-Produce a weekly recovery curve with columns like:
+Produce a weekly recovery curve using elapsed weeks since placement, rather than simply grouping by payment calendar date. Suggested columns:
 
 - `placement_month`
 - `week_since_placement`
@@ -134,7 +134,7 @@ You do not need to present every line of SQL in detail. Focus on the decisions t
 - how you understood the source data
 - how you defined the population and denominator
 - how you treated payment records
-- how you calculated elapsed time since placement
+- how you converted placement and payment dates into elapsed weeks or months since placement
 - how you avoided aggregation or join issues
 - how you calculated cumulative values
 - how you validated the result
