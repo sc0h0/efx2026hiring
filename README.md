@@ -2,7 +2,7 @@
 
 ## Context
 
-You are working as a junior analyst in a collections analytics team.
+You are working as a data analyst in a collections analytics team.
 
 When an account becomes overdue, it may be placed with a debt collection agency. The business wants to understand how quickly money is recovered after placement and whether recovery differs across customer or account segments.
 
@@ -21,7 +21,7 @@ You also receive one additional event file:
 
 The core recovery and activation tasks can be completed using `accounts.csv` and `payments.csv`.
 
-The `contacts.csv` file is included because real collections analysis often requires linking operational activity to customer outcomes. You do not need to use it to complete the core task. However, if you have time, it can be used to demonstrate stronger SQL and analytical thinking by exploring whether contact timing, contact channel, or promise-to-pay events are associated with payment activation.
+The `contacts.csv` file is included because real collections analysis often requires linking operational activity to customer outcomes. You do not need to use it to complete the core task. However, if you have time, it can be used to demonstrate stronger SQL and analytical thinking by exploring how contact activity relates to later payment behaviour.
 
 You also receive two tiny hand-check files:
 
@@ -71,24 +71,9 @@ Produce a weekly recovery curve with columns like:
 
 Build at least two segmented recovery curves.
 
-Useful segment fields include:
+Choose segment fields that you think are useful for understanding differences in recovery performance. You may use existing fields from the account table or create your own derived segments.
 
-- `risk_band`
-- `product_type`
-- `customer_age` or `age_band`
-- `income_band`
-- `employment_status`
-- `state`
-- `region`
-- `customer_segment`
-- `digital_consent`
-- `hardship_flag`
-- `dispute_flag`
-- `assigned_agency`
-- `treatment_stream`
-- a balance band you create from `placed_balance`
-
-When comparing segments, be ready to explain whether the difference appears meaningful and what other mix effects or data-quality issues might affect the conclusion.
+When comparing segments, be ready to explain why you chose those cuts, whether the differences appear meaningful, and what limitations might affect the conclusion.
 
 ### 4. Activation curve
 
@@ -105,33 +90,24 @@ Suggested columns:
 - `accounts_with_first_payment_by_week`
 - `cumulative_activation_rate`
 
-### 5. Data-quality checks
+### 5. Data-quality review
 
-Before calculating the final metric, inspect the data and note any quality issues or assumptions.
+Before calculating the final metric, inspect the data and note any quality issues or assumptions that may affect the result.
 
-Be ready to show checks for things like:
+You are not expected to make the data perfect. The aim is to show that you can think critically about whether the source data supports the metric you are building.
 
-- missing placement dates
-- missing or invalid placed balances
-- payment rows with unknown account IDs
-- payments before placement
-- duplicate payment rows
-- negative or zero payment amounts
-- inconsistent segment values
-- very recent cohorts with incomplete observation time
+Be prepared to explain:
+
+- what checks you ran
+- what issues, if any, you found
+- whether you excluded, transformed, flagged, or retained questionable records
+- how those decisions affect the recovery and activation metrics
 
 ## Optional extension: contact-event analysis
 
 If you finish the core task and want to demonstrate additional analytical depth, use `contacts.csv` to explore one operational question.
 
-Examples:
-
-- Do accounts with at least one contact before first payment activate faster?
-- Are accounts with a `promise_to_pay` contact more likely to pay within 14 days?
-- Which contact channel is associated with the highest first-payment rate?
-- How many contacts happen before first payment by risk band?
-- Are higher-risk or hardship accounts contacted more frequently?
-- Are contact outcomes associated with recovery, or could the relationship be affected by selection bias?
+For example, you might investigate whether contact activity appears to be associated with payment activation or recovery outcomes.
 
 This is optional. If you use the contacts table, be careful with causality. Contacted accounts may differ from non-contacted accounts. A higher payment rate after contact does not automatically prove that the contact caused the payment.
 
@@ -155,12 +131,13 @@ You should be ready to:
 
 You do not need to present every line of SQL in detail. Focus on the decisions that affect correctness:
 
-- which records are in the denominator
-- which payment records are included or excluded
-- how you calculate elapsed time since placement
-- how you avoid double-counting balances
-- how you calculate cumulative values
-- how you validate the result
+- how you understood the source data
+- how you defined the population and denominator
+- how you treated payment records
+- how you calculated elapsed time since placement
+- how you avoided aggregation or join issues
+- how you calculated cumulative values
+- how you validated the result
 
 ## Tools
 
