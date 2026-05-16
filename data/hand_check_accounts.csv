@@ -1,0 +1,4 @@
+account_id,customer_id,placement_date,placed_balance,original_balance,product_type,risk_band,customer_age,age_band,income_band,employment_status,state,region,customer_segment,digital_consent,hardship_flag,dispute_flag,prior_successful_payments_12m,credit_score_band,tenure_months,assigned_agency,treatment_stream
+HC001,HCC001,2026-01-01,100.0,100.0,credit_card,B,35,35_44,70k_100k,full_time,VIC,metro,standard,1,0,0,2,660_719,24,agency_alpha,digital_first
+HC002,HCC002,2026-01-01,200.0,220.0,personal_loan,D,49,45_54,40k_70k,casual,NSW,regional,low_contactability,0,0,0,0,540_599,12,agency_beta,phone_first
+HC003,HCC003,2026-01-08,50.0,60.0,bnpl,A,29,25_34,100k_150k,full_time,QLD,metro,digital_engaged,1,0,0,5,720_plus,36,internal_collections,sms_email_sequence

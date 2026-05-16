@@ -1,0 +1,4 @@
+payment_id,account_id,payment_date,payment_amount,payment_channel,payment_type,source_system,reversal_of_payment_id
+HCP001,HC001,2026-01-03,20.0,card,payment,customer_portal,
+HCP002,HC001,2026-01-10,30.0,bpay,payment,bank_file,
+HCP003,HC003,2026-01-20,50.0,direct_debit,payment,direct_debit,
